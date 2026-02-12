@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class StateMachineManagement : MonoBehaviour
 {
+
     public Animator animator;
 
     public StateMachine machine;
@@ -15,6 +16,7 @@ public abstract class StateMachineManagement : MonoBehaviour
         machine.Set(newState, forceReset);
     }
 
+    // With this, the states will be instantiated; however, there will be a constraint that the states of a GameObject must be contained within its hierarchy.
     public void SetupInstances()
     {
         machine = new StateMachine();
@@ -26,6 +28,7 @@ public abstract class StateMachineManagement : MonoBehaviour
         }
     }
 
+    // Displays states and substates in a hierarchy within the editor; in the future, implement something more visually digestible.
     private void OnDrawGizmos()
     {
 #if UNITY_EDITOR
