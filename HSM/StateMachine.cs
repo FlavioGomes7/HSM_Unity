@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class StateMachine
 {
     public State state;
+    private List<State> states = new List<State>();
 
     public void Set(State newState, bool forceReset = false)
     {
@@ -14,7 +16,7 @@ public class StateMachine
             state = newState;
             if(state != null) 
             {
-                state.Inicialize(this);
+                state.Initialize(this);
                 state.Enter();
             }
         }
@@ -25,7 +27,8 @@ public class StateMachine
     {
         if (list == null)
         {
-            list = new List<State>();
+            states.Clear();
+            list = states;
         }
 
         if (state == null)
